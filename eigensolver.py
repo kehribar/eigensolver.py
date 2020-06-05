@@ -9,7 +9,7 @@ from flask import Flask
 from flask import request
 
 # ...
-DEBUG = True
+DEBUG = False
 
 # ...
 if((len(sys.argv) < 2)):
