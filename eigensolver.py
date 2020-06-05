@@ -9,6 +9,9 @@ from flask import Flask
 from flask import request
 
 # ...
+DEBUG = False
+
+# ...
 if((len(sys.argv) < 2)):
   print("Missing arguments!")
   print("Usage: python3 eigensolver.py PORTNUM")
@@ -36,25 +39,36 @@ def eigensolver():
   inp = inp['data']
   inp = np.asarray(inp)
 
-  print("")
-  print("Input:")
-  print(inp)
+  # ...
+  dimsize = int(np.sqrt(len(inp)))
 
-  print("")
-  print("Diagonalised:")
-  print(np.diag(inp))
+  # ...
+  if(DEBUG):
+    print("")
+    print("Input:")
+    print(inp)
 
-  [v, d] = np.linalg.eig(np.diag(inp))
+  # ...
+  inp = np.resize(inp, (dimsize, dimsize))
+  inp = np.transpose(inp)
+
+  # ...
+  if(DEBUG):
+    print("")
+    print("Reformatted:")
+    print(inp)
+
+  [v, d] = np.linalg.eig(inp)
   
-  print("")
-  print("v:")
-  print(v)
-
-  print("")
-  print("d:")
-  print(v)
-
-  print("")
+  # ...
+  if(DEBUG):
+    print("")
+    print("v:")
+    print(v)
+    print("")
+    print("d:")
+    print(v)
+    print("")
 
   retval = json.dumps({"return": v.tolist()})
   return retval

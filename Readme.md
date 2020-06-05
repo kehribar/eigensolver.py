@@ -27,3 +27,23 @@ For MacOS
 You can use the `test.py` script to generate test request to the solver after you started the server. This script assumes server port `8080`
 
 	$ python3 test.py
+
+## Operation
+
+Receives POST request to `/eig` endpoint with the following format:
+
+	{"data": [0, 1, 2, 3, 4, 5, 6, 7, 8]}
+
+Converts the input data into numpy array:
+
+	[0 1 2 3 4 5 6 7 8]
+
+Reformats it as 2D array with the following format:
+
+	[[0 3 6]
+	 [1 4 7]
+	 [2 5 8]]
+
+Then, calculates the eigenvalues of the matrix and returns the following result:
+
+	{"return": [13.348469228349522, -1.3484692283495336, -9.991844527712246e-16]}
