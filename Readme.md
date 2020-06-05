@@ -44,6 +44,6 @@ Reformats it as 2D array with the following format:
 	 [1 4 7]
 	 [2 5 8]]
 
-Then, calculates the eigenvalues of the matrix and returns the following result:
+Then, calculates the eigenvalues of the matrix and returns the following result in the response body:
 
-	{"return": [13.348469228349522, -1.3484692283495336, -9.991844527712246e-16]}
+	13.348469228349522 -1.3484692283495336 -9.991844527712246e-16
