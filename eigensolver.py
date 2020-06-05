@@ -9,7 +9,7 @@ from flask import Flask
 from flask import request
 
 # ...
-DEBUG = False
+DEBUG = True
 
 # ...
 if((len(sys.argv) < 2)):
@@ -38,6 +38,7 @@ def eigensolver():
   inp = json.loads(request.json)
   inp = inp['data']
   inp = np.asarray(inp)
+  inp_size = len(inp)
 
   # ...
   dimsize = int(np.sqrt(len(inp)))
@@ -58,7 +59,8 @@ def eigensolver():
     print("Reformatted:")
     print(inp)
 
-  [v, d] = np.linalg.eig(inp)
+  # Run the solver
+  d, v = np.linalg.eig(inp)
   
   # ...
   if(DEBUG):
@@ -67,6 +69,15 @@ def eigensolver():
     print(v)
     print("")
     print("d:")
+    print(d)
+    print("")
+
+  # ...
+  v = np.resize(v, (1, inp_size))
+
+  # ...
+  if(DEBUG):
+    print("Reformatted result:")
     print(v)
     print("")
 
