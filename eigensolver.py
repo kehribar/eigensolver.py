@@ -70,8 +70,8 @@ def eigensolver():
     print(v)
     print("")
 
-  retval = json.dumps({"return": v.tolist()})
-  return retval
+  # ...
+  return np.array_str(v).strip('[]')
 
 # ...
 try:
